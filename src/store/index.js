@@ -10,6 +10,7 @@ const state = {
 };
 
 export default new Vuex.Store({
+  // store全局状态
   state,
   // 改变store的状态 必须为同步
   mutations,
