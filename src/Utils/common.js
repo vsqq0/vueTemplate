@@ -61,18 +61,38 @@ export default class ajax {
     }
   }
   /**
-   * ajax请求 可以传一个对象或者url字符串
-   * @param {Object} 请求参数就是axios的参数
-   * @returns {Object}
+   * @param {string} url 必填
+   * @returns {Object} params
    */
   static get(url, params) {
     return axios.get(useDevUrl(url), {
       params: params || {}
     });
   }
-
+  /**
+   * @param {string} url 必填
+   * @returns {Object} params
+   */
   static post(url, params) {
     return axios.post(useDevUrl(url), {
+      params: params || {}
+    });
+  }
+  /**
+   * @param {string} url 必填
+   * @returns {Object} params
+   */
+  static put(url, params) {
+    return axios.put(useDevUrl(url), {
+      params: params || {}
+    });
+  }
+  /**
+   * @param {string} url 必填
+   * @returns {Object} params
+   */
+  static delete(url, params) {
+    return axios.delete(useDevUrl(url), {
       params: params || {}
     });
   }
