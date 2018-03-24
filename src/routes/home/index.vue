@@ -11,8 +11,8 @@
 
 <script>
 import { Group, Cell } from 'vux';
-import axios from 'axios';
-import _ from 'lodash';
+import $ from '../../Utils/common';
+// import _ from 'lodash';
 
 export default {
   components: {
@@ -28,12 +28,17 @@ export default {
       msg: 'Hello World!'
     };
   },
-  created() {
-    var a = axios.get(
-      'login?user.phone=17135500411&user.password=e9bc0e13a8a16cbb07b175d92a113126'
-    );
+  async created() {
+    var a = await $.get('cate');
     console.log(a);
-    _.map([1, 2, 3]);
+    var foo = (i, time) => {
+      console.log(i + 1);
+      return $.setTimeOut(() => {
+        console.log(i);
+      }, time);
+    };
+    await foo(1, 100);
+    await foo(2, 50);
   }
 };
 </script>
