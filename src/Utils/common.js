@@ -1,5 +1,16 @@
 import axios from 'axios';
 
+// 注释此处取消rap-mock
+// axios.interceptors.request.use(config => {
+//   config.url =
+//     'http://rap2api.taobao.org/app/mock/8574/' +
+//     config.method +
+//     '/' +
+//     config.url.split('api/')[1];
+//   console.log(config.url);
+//   return config;
+// });
+
 export default class ajax {
   /**
    *  设置cookie
@@ -65,7 +76,7 @@ export default class ajax {
    * @returns {Object} params
    */
   static get(url, params) {
-    return axios.get(MockUrl(url), {
+    return axios.get(devUrl(url), {
       params: params || {}
     });
   }
@@ -74,7 +85,7 @@ export default class ajax {
    * @returns {Object} params
    */
   static post(url, params) {
-    return axios.post(MockUrl(url), {
+    return axios.post(devUrl(url), {
       params: params || {}
     });
   }
@@ -83,7 +94,7 @@ export default class ajax {
    * @returns {Object} params
    */
   static put(url, params) {
-    return axios.put(MockUrl(url), {
+    return axios.put(devUrl(url), {
       params: params || {}
     });
   }
@@ -92,7 +103,7 @@ export default class ajax {
    * @returns {Object} params
    */
   static delete(url, params) {
-    return axios.delete(MockUrl(url), {
+    return axios.delete(devUrl(url), {
       params: params || {}
     });
   }
@@ -106,7 +117,7 @@ export default class ajax {
   static ajax(method, url, data) {
     return axios({
       method: method,
-      url: MockUrl(url),
+      url: devUrl(url),
       data: data
     });
   }
@@ -127,13 +138,6 @@ export default class ajax {
   // }
 }
 
-const MockUrl = url => {
-  if (this.env_mock) {
-    // mock
-    return process.env.NODE_ENV === 'development'
-      ? 'https://easy-mock.com/mock/5ab89b57ff419d770cd3cb4b/example/' + url
-      : url;
-  }
-  // 真实
+const devUrl = url => {
   return process.env.NODE_ENV === 'development' ? 'api/' + url : url;
 };

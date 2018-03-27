@@ -26,14 +26,7 @@ export default {
     };
   },
   async created() {
-    // var a = await $.get('http://www.zjttmall.com/login', {
-    //   'user.phone': '1713550041',
-    //   'user.password': 'e9bc0e13a8a16cbb07b175d92a113126'
-    // });
-    console.log(this.env_mock);
-
-    var a = await $.get('query');
-    console.log(a);
+    console.log($.put('qq'));
   }
 };
 </script>
