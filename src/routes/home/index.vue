@@ -26,7 +26,7 @@ export default {
     };
   },
   async created() {
-    console.log($.put('qq'));
+    console.log($.get('cate'));
   }
 };
 </script>
