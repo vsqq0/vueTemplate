@@ -65,7 +65,7 @@ export default class ajax {
    * @returns {Object} params
    */
   static get(url, params) {
-    return axios.get(useDevUrl(url), {
+    return axios.get(MockUrl(url), {
       params: params || {}
     });
   }
@@ -74,7 +74,7 @@ export default class ajax {
    * @returns {Object} params
    */
   static post(url, params) {
-    return axios.post(useDevUrl(url), {
+    return axios.post(MockUrl(url), {
       params: params || {}
     });
   }
@@ -83,7 +83,7 @@ export default class ajax {
    * @returns {Object} params
    */
   static put(url, params) {
-    return axios.put(useDevUrl(url), {
+    return axios.put(MockUrl(url), {
       params: params || {}
     });
   }
@@ -92,7 +92,7 @@ export default class ajax {
    * @returns {Object} params
    */
   static delete(url, params) {
-    return axios.delete(useDevUrl(url), {
+    return axios.delete(MockUrl(url), {
       params: params || {}
     });
   }
@@ -106,7 +106,7 @@ export default class ajax {
   static ajax(method, url, data) {
     return axios({
       method: method,
-      url: useDevUrl(url),
+      url: MockUrl(url),
       data: data
     });
   }
@@ -126,6 +126,14 @@ export default class ajax {
   //   formData.append('file', event.target.files[0]);
   // }
 }
-const useDevUrl = url => {
+
+const MockUrl = url => {
+  if (this.env_mock) {
+    // mock
+    return process.env.NODE_ENV === 'development'
+      ? 'https://easy-mock.com/mock/5ab89b57ff419d770cd3cb4b/example/' + url
+      : url;
+  }
+  // 真实
   return process.env.NODE_ENV === 'development' ? 'api/' + url : url;
 };

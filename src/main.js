@@ -1,19 +1,19 @@
-// The Vue build version to load with the `import` command
-// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue';
 import FastClick from 'fastclick';
 import router from './router';
 import store from './store';
 import App from './App';
 
-// 需要真实接口数据时注释此处
-import './mock';
-
 FastClick.attach(document.body);
 
 Vue.config.productionTip = false;
 
-/* eslint-disable no-new */
+// 开启easy-mock如不需要,请设为false https://easy-mock.com/project/5ab89b57ff419d770cd3cb4b
+Vue.prototype.env_mock = true;
+
+// 开启本地mock 需引入mockjs，不需要请直接注释，首选远程mock，后端不愿意联调配合再本地mock
+// import './mock';
+
 new Vue({
   router,
   store,
