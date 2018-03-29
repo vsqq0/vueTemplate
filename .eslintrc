@@ -8,19 +8,21 @@
     "browser": true
   },
   "extends": "standard",
-  "plugins": [
-    "html"
-  ],
+  "plugins": ["html"],
   "rules": {
+    "no-unused-expressions": 0,
     "space-before-function-paren": [0, "always"],
     "arrow-parens": 0,
     "generator-star-spacing": 0,
-    "no-unused-vars": [2, { 
-      "vars": "local",
-      "args": "none" 
-    }],
+    "no-unused-vars": [
+      2,
+      {
+        "vars": "local",
+        "args": "none"
+      }
+    ],
     "semi": [0],
-    "no-multiple-empty-lines": [0, {"max": 100}],
+    "no-multiple-empty-lines": [0, { "max": 100 }],
     "no-mixed-spaces-and-tabs": [0]
   }
 }

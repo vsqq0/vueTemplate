@@ -1,15 +1,4 @@
-import axios from 'axios';
-
-// 注释此处取消rap-mock
-// axios.interceptors.request.use(config => {
-//   config.url =
-//     'http://rap2api.taobao.org/app/mock/8574/' +
-//     config.method +
-//     '/' +
-//     config.url.split('api/')[1];
-//   console.log(config.url);
-//   return config;
-// });
+// import axios from 'axios';
 
 export default class ajax {
   /**
@@ -71,56 +60,7 @@ export default class ajax {
       return false;
     }
   }
-  /**
-   * @param {string} url 必填
-   * @returns {Object} params
-   */
-  static get(url, params) {
-    return axios.get(devUrl(url), {
-      params: params || {}
-    });
-  }
-  /**
-   * @param {string} url 必填
-   * @returns {Object} params
-   */
-  static post(url, params) {
-    return axios.post(devUrl(url), {
-      params: params || {}
-    });
-  }
-  /**
-   * @param {string} url 必填
-   * @returns {Object} params
-   */
-  static put(url, params) {
-    return axios.put(devUrl(url), {
-      params: params || {}
-    });
-  }
-  /**
-   * @param {string} url 必填
-   * @returns {Object} params
-   */
-  static delete(url, params) {
-    return axios.delete(devUrl(url), {
-      params: params || {}
-    });
-  }
-  /**
-   * ajax请求 可以传一个对象或者url字符串
-   * @param {string} method "get" "post" "put" "delete"
-   * @param {string} url
-   * @param {string} data
-   * @returns {Object}
-   */
-  static ajax(method, url, data) {
-    return axios({
-      method: method,
-      url: devUrl(url),
-      data: data
-    });
-  }
+
   /**
    * 设置用户cookie
    * @param {string} key
@@ -137,7 +77,3 @@ export default class ajax {
   //   formData.append('file', event.target.files[0]);
   // }
 }
-
-const devUrl = url => {
-  return process.env.NODE_ENV === 'development' ? 'api/' + url : url;
-};

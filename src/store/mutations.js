@@ -1,6 +1,7 @@
+import { SAVE_USER_INFO } from './mutation-types';
+
 export default {
-  action(state, { latitude, longitude }) {
-    state.latitude = latitude;
-    state.longitude = longitude;
+  [SAVE_USER_INFO](state, userInfo) {
+    state.userInfo = userInfo;
   }
 };

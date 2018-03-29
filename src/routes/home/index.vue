@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="vux-demo">
-      <h1> </h1>
+      <a> sadas</a>
     </div>
     <group title="cell demo">
       <cell title="VUX" value="cool" is-link></cell>
@@ -11,7 +11,7 @@
 
 <script>
 import { Group, Cell } from 'vux';
-import $ from '../../Utils/common';
+// import $ from '../../Utils/common';
 // import _ from 'lodash';
 // import axios from 'axios';
 
@@ -26,7 +26,7 @@ export default {
     };
   },
   async created() {
-    console.log($.get('cate'));
+    // console.log(await $.get('flagStore'));
   }
 };
 </script>
